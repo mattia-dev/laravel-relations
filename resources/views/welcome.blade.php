@@ -1,3 +1,14 @@
+Giornale online
+1 parte:
+Creazione nuovo progetto
+Creazione model e migration di Article e Author (+ seeder)
+Ricordatevi della foreign key da article verso author (one to many)
+2 parte:
+Prepariamo crud vuota di Article
+Create e store di article completa
+
+Frontend: home page degli articoli (scss)
+
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
