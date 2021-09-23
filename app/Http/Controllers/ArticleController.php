@@ -15,7 +15,8 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        
+        $articles = Article::all();
+        return view('articles.index', compact('articles'));
     }
 
     /**
@@ -25,7 +26,8 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        //
+        $authors = Author::all();
+        return view('articles.create', compact('authors'));
     }
 
     /**
@@ -36,7 +38,23 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title' => 'required',
+            'image' => 'required|url',
+            'body' => 'required',
+        ]);
+
+        $data = $request->all();
+
+        $article = new Article();
+        $article->title = $data['title'];
+        $article->author_id = $data['author_id'];
+        $article->image = $data['image'];
+        $article->body = $data['body'];
+        $article->save();
+
+
+        return redirect()->route('articles.show', $article);
     }
 
     /**
@@ -47,7 +65,7 @@ class ArticleController extends Controller
      */
     public function show(Article $article)
     {
-        //
+        return view('articles.show', compact('article'));
     }
 
     /**
