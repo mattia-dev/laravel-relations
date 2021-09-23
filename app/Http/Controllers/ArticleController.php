@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Article;
+use App\Author;
 use Illuminate\Http\Request;
 
 class ArticleController extends Controller
@@ -14,7 +15,7 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**
