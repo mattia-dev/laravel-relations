@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Article;
 use App\Author;
+use App\Tag;
 use Illuminate\Http\Request;
 
 class ArticleController extends Controller
@@ -27,7 +28,8 @@ class ArticleController extends Controller
     public function create()
     {
         $authors = Author::all();
-        return view('articles.create', compact('authors'));
+        $tags = Tag::all();
+        return view('articles.create', compact('authors', 'tags'));
     }
 
     /**
@@ -53,6 +55,15 @@ class ArticleController extends Controller
         $article->body = $data['body'];
         $article->save();
 
+        if (array_key_exists('tags', $data)) {
+
+            foreach ($data['tags'] as $tagId) {
+            
+                $article->tag()->attach($tagId);
+                
+            }
+            
+        }
 
         return redirect()->route('articles.show', $article);
     }
