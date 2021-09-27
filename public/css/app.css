@@ -16446,3 +16446,11 @@ a:hover {
   text-decoration: none;
 }
 
+.comment {
+  margin: 12px 0;
+  padding: 12px;
+  background-color: #ebebeb;
+  border: 1px solid grey;
+  border-top: 0;
+}
+

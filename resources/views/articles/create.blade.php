@@ -57,7 +57,9 @@
                 <textarea class="form-control" name="body" id="body" cols="30" rows="10"></textarea>
             </div>
 
-            <button class="btn btn-primary" type="submit">Pubblica</button>
+            <div class="clearfix">
+                <button class="btn btn-primary float-right" type="submit">Pubblica</button>
+            </div>
         </form>
     </div>
 @endsection

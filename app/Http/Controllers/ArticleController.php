@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Article;
 use App\Author;
 use App\Tag;
+use App\Comment;
 use Illuminate\Http\Request;
 
 class ArticleController extends Controller
@@ -16,7 +17,7 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        $articles = Article::all();
+        $articles = Article::all()->sortByDesc('updated_at');
         return view('articles.index', compact('articles'));
     }
 
@@ -110,6 +111,8 @@ class ArticleController extends Controller
      */
     public function destroy(Article $article)
     {
-        //
+        $article->tag()->detach();
+        $article->delete();
+        return redirect()->route('articles.index');
     }
 }
